@@ -7,23 +7,23 @@
       <h2>Love it</h2>
     </div>
     <div class="drop-zone">
-      <div class="game drag-element" v-for="{id, title, thumbnail} in getList(2)" :key="id">
-        <p>{{ title }}</p>
-        <img :src="thumbnail" :alt=title>
-      </div>
+      <Game v-for="{id, title, thumbnail} in getList(2)" :key=id :title=title :thumbnail=thumbnail />
     </div>
   </section>
 
   <section class="games--container drop-zone">
-    <div class="game drag-element" v-for="{id, title, thumbnail} in getList(1)" :key="id">
-      <p>{{ title }}</p>
-      <img :src="thumbnail" :alt=title>
-    </div>
+    <Game 
+      v-for="{id, title, thumbnail} in getList(1)"
+      :key=id
+      :title=title
+      :thumbnail=thumbnail
+    />
   </section>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import Game from './components/Game.vue'
 
 // games data
 const games = ref([
@@ -335,7 +335,7 @@ section {
     grid-area: drop;
     background-color: grey;
   }
-  .games--container {
+  .drop-zone {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -348,17 +348,5 @@ section {
     outline: 1px solid red;
   }
 
-  .game {
-    display: flex;
-    flex-direction: column-reverse;
-    flex: 0 0 18%;
-    width: 100%;
-    height: auto;
-  }
-
-  .game img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
+ 
 </style>
