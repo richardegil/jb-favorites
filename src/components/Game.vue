@@ -13,17 +13,17 @@ const props = defineProps({
 </script>
 
 <style scoped>
-/* .game {
-   display: flex;
-   flex-direction: column-reverse;
-   flex: 0 0 18%;
-   width: 100%;
-   height: auto;
+p {
+  font-weight: 700;
  }
 
- .game img {
-   width: 100%;
-   max-width: 100%;
-   height: auto;
- } */
+ .drag-element:active {
+   cursor: grabbing;
+   background-color: aqua;
+   box-shadow: 12px 12px 24px 0px rgba(0, 0, 0, 0.08);
+ }
+
+ .drag-element:focus {
+   cursor: grabbing;
+ }
 </style>

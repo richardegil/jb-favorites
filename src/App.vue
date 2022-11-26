@@ -374,7 +374,7 @@ header {
   grid-template-areas: 'games drops';
   width: 100%;
   height: 100vh;
-  gap: 1rem;
+  gap: 8rem;
 }
 
 .games--container {
@@ -386,6 +386,7 @@ header {
   width: 100%;
   height: 100vh;
   overflow-y: scroll;
+  gap: 1rem;
 }
 .games--container .game {
   display: flex;
@@ -414,14 +415,17 @@ grid-area: drops;
 
 .ranking--container {
   display: grid;
-  grid-template-columns: 100px 1fr;
-  grid-template-rows: auto;
-  grid-template-areas: 'heading drop';
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: 'heading'
+  'drop';
   width: 100%;
   max-width: 1200px;
-  min-height: 100px;
-  outline: 1px solid pink;
+  height: auto;
+  /* min-height: 100px; */
   grid-area: drops;
+  align-content: start;
+  padding: 2rem;
 }
 
 .ranking--container .game {
@@ -434,27 +438,38 @@ grid-area: drops;
 
 .ranking--container .heading {
   grid-area: heading;
-  writing-mode: vertical-lr;
+  /* writing-mode: vertical-lr; */
 }
 
 .ranking--container .heading h2 {
-  rotate: 180deg;
+  /* rotate: 180deg; */
+}
+
+.ranking--container .game p {
+  font-weight: 300;
 }
 
 .ranking--container .drop-zone {
   grid-area: drop;
-  background-color: grey;
+  /* background: #EBEBEB; */
+  height: auto;
+  min-height: 200px;
+  border-radius: 4rem;
+  padding: 4rem;
+  outline: 4px dashed #EBEBEB;
+  /* outline: 4px solid lightblue */
+  
 }
 .drop-zone {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: space-evenly;
-  /* gap: 1rem; */
+  justify-content: flex-start;
+  gap: 1rem;
   width: 100%;
   max-width: 1200px;
   height: auto;
-  outline: 1px solid red;
+  cursor: grabbing;
 }
 </style>
