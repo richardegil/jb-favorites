@@ -1,8 +1,7 @@
 <template>
-  <!-- <header>
+  <header>
     <h1>Rank Your Favorite Jackbox Games</h1>
-  </header> -->
-  
+  </header>
   <div class="sorting--container">
     <section class="games--container drop-zone" @drop="onDrop($event, 1)" @dragenter.prevent @dragover.prevent>
       <Game v-for="game in getList(1)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
@@ -14,6 +13,7 @@
           <h2>Love it</h2>
         </div>
         <div class="drop-zone" @drop="onDrop($event, 2)" @dragenter.prevent @dragover.prevent>
+          <h3 v-if="getList(2) == 0">Drop games you love here!</h3>
           <Game v-for="game in getList(2)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
             @dragstart="startDrag($event, game)" />
         </div>
@@ -23,6 +23,7 @@
           <h2>Like it</h2>
         </div>
         <div class="drop-zone" @drop="onDrop($event, 3)" @dragenter.prevent @dragover.prevent>
+          <h3 v-if="getList(3) == 0">Drop games you like here!</h3>
           <Game v-for="game in getList(3)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
             @dragstart="startDrag($event, game)" />
         </div>
@@ -32,6 +33,7 @@
           <h2>Leave it</h2>
         </div>
         <div class="drop-zone" @drop="onDrop($event, 4)" @dragenter.prevent @dragover.prevent>
+          <h3 v-if="getList(4) == 0">Drop games you would leave here!</h3>
           <Game v-for="game in getList(4)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
             @dragstart="startDrag($event, game)" />
         </div>
@@ -41,15 +43,12 @@
           <h2>Haven't Played</h2>
         </div>
         <div class="drop-zone" @drop="onDrop($event, 5)" @dragenter.prevent @dragover.prevent>
+          <h3 v-if="getList(5) == 0">Drop games you haven't played yet here!</h3>
           <Game v-for="game in getList(5)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
             @dragstart="startDrag($event, game)" />
         </div>
       </section>
     </div>
-    
-    
-    
-    
   </div>
 </template>
 
@@ -365,6 +364,9 @@ header {
   width: 100%;
   height: 100px;
   background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sorting--container {
@@ -373,7 +375,7 @@ header {
   grid-template-rows: auto;
   grid-template-areas: 'games drops';
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 100px);
   gap: 8rem;
 }
 
@@ -384,10 +386,20 @@ header {
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 100px);
   overflow-y: scroll;
   gap: 1rem;
+  padding: 1rem;
+  overflow-x: visible;
 }
+
+.games--container .drop-zone {
+  border: 1px solid pink;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
 .games--container .game {
   display: flex;
   flex-direction: column-reverse;
@@ -409,7 +421,7 @@ grid-area: drops;
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow-y: scroll;
 }
 
@@ -417,15 +429,15 @@ grid-area: drops;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 50px 1fr;
-  grid-template-areas: 'heading'
+  grid-template-areas: 
+  'heading'
   'drop';
   width: 100%;
   max-width: 1200px;
   height: auto;
-  /* min-height: 100px; */
   grid-area: drops;
   align-content: start;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .ranking--container .game {
@@ -438,11 +450,6 @@ grid-area: drops;
 
 .ranking--container .heading {
   grid-area: heading;
-  /* writing-mode: vertical-lr; */
-}
-
-.ranking--container .heading h2 {
-  /* rotate: 180deg; */
 }
 
 .ranking--container .game p {
@@ -451,13 +458,11 @@ grid-area: drops;
 
 .ranking--container .drop-zone {
   grid-area: drop;
-  /* background: #EBEBEB; */
   height: auto;
-  min-height: 200px;
+  min-height: 50px;
   border-radius: 4rem;
   padding: 4rem;
   outline: 4px dashed #EBEBEB;
-  /* outline: 4px solid lightblue */
   
 }
 .drop-zone {
@@ -471,5 +476,13 @@ grid-area: drops;
   max-width: 1200px;
   height: auto;
   cursor: grabbing;
+}
+
+.drop-zone h3{
+  width: 100%;
+  color: #ccc;
+  align-self: center;
+  justify-self: center;
+
 }
 </style>
