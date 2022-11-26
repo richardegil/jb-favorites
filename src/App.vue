@@ -1,7 +1,7 @@
 <template>
-  <header>
+  <!-- <header>
     <h1>Rank Your Favorite Jackbox Games</h1>
-  </header>
+  </header> -->
   
   <div class="sorting--container">
     <section class="games--container drop-zone" @drop="onDrop($event, 1)" @dragenter.prevent @dragover.prevent>
@@ -68,7 +68,7 @@ const games = ref([
     id: 1,
     title: "Nonsensory",
     thumbnail: "https://jackboxgames.b-cdn.net/wp-content/uploads/2022/09/NS_WebTile_635x291.jpg",
-    list: 2
+    list: 1
   },
   {
     id: 2,
@@ -169,7 +169,7 @@ const games = ref([
   {
     id: 18,
     title: "Joke Boat",
-    thumbnail: "https://jackboxgames.b-cdn.net/wp-content/uploads/2021/10/tile-1x-1.png",
+    thumbnail: "https://jackboxgames.b-cdn.net/wp-content/uploads/2019/08/TJPP6_JokeBoat.jpg",
     list: 1
   },
   {
@@ -360,9 +360,11 @@ const onDrop = (event, list) => {
 section {
   padding: 0rem 0 4rem;
 }
-
-h1 {
-  position: fixed;
+header {
+  position: sticky;
+  width: 100%;
+  height: 100px;
+  background: white;
 }
 
 .sorting--container {
@@ -372,6 +374,7 @@ h1 {
   grid-template-areas: 'games drops';
   width: 100%;
   height: 100vh;
+  gap: 1rem;
 }
 
 .games--container {
@@ -410,40 +413,48 @@ grid-area: drops;
 }
 
 .ranking--container {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: 'heading drop';
-    width: 100%;
-    max-width: 1200px;
-    min-height: 100px;
-    outline: 1px solid pink;
-    grid-area: drops;
-  }
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 'heading drop';
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100px;
+  outline: 1px solid pink;
+  grid-area: drops;
+}
 
-  .ranking--container .heading {
-    grid-area: heading;
-    writing-mode: vertical-lr;
-  }
+.ranking--container .game {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  max-width: 18%;
+  height: auto;
+}
 
-  .ranking--container .heading h2 {
-    rotate: 180deg;
-  }
+.ranking--container .heading {
+  grid-area: heading;
+  writing-mode: vertical-lr;
+}
 
-  .ranking--container .drop-zone {
-    grid-area: drop;
-    background-color: grey;
-  }
-  .drop-zone {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-games: center;
-    justify-content: space-evenly;
-    gap: 1rem;
-    width: 100%;
-    max-width: 1200px;
-    height: auto;
-    outline: 1px solid red;
-  }
+.ranking--container .heading h2 {
+  rotate: 180deg;
+}
+
+.ranking--container .drop-zone {
+  grid-area: drop;
+  background-color: grey;
+}
+.drop-zone {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  /* gap: 1rem; */
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  outline: 1px solid red;
+}
 </style>
