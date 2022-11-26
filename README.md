@@ -1,7 +1,11 @@
-# Vue 3 + Vite
+# Jackbox Games Ranking
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This project takes a dataset of the 45 Jackbox games and allows the user to sort them into four different categories: "Love It", "Like It", "Leave It", "Haven't played".
 
-## Recommended IDE Setup
+This was developed on a 16" MacBook Pro and should in a browser no smaller than 1280px wide.
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+## TODO
+* Move data into external file to be imported
+* Create Dropzone component for better reusability
+* Better responsive support
+* Better styling to match brand
