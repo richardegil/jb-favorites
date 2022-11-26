@@ -11,5 +11,6 @@ This was developed on a 16" MacBook Pro and should in a browser no smaller than 
 ## TODO
 * Move data into external file to be imported
 * Create Dropzone component for better reusability
+* Add way for the user to store their rankings
 * Better responsive support
 * Better styling to match brand
