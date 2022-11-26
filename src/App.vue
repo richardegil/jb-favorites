@@ -1,13 +1,13 @@
 <template>
-  <header>
-    <h1>Rank Your Favorite Jackbox Games</h1>
-  </header>
   <div class="sorting--container">
     <section class="games--container drop-zone" @drop="onDrop($event, 1)" @dragenter.prevent @dragover.prevent>
       <Game v-for="game in getList(1)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
         @dragstart="startDrag($event, game)" />
     </section>
     <div class="rankings--container">
+        <header>
+          <h1>Rank Your Favorite Jackbox Games</h1>
+        </header>
       <section class="ranking--container">
         <div class="heading">
           <h2>Love it</h2>
@@ -360,7 +360,7 @@ section {
   padding: 0rem 0 4rem;
 }
 header {
-  position: sticky;
+  position: relative;
   width: 100%;
   height: 100px;
   background: white;
@@ -375,7 +375,7 @@ header {
   grid-template-rows: auto;
   grid-template-areas: 'games drops';
   width: 100%;
-  height: calc(100vh - 100px);
+  height: 100vh;
   gap: 8rem;
 }
 
@@ -386,7 +386,7 @@ header {
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
-  height: calc(100vh - 100px);
+  height: 100vh;
   overflow-y: scroll;
   gap: 1rem;
   padding: 1rem;
@@ -422,7 +422,7 @@ grid-area: drops;
   justify-content: flex-start;
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .ranking--container {
