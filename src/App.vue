@@ -356,19 +356,6 @@ const onDrop = (event, list) => {
 </script>
 
 <style scoped>
-section {
-  padding: 0rem 0 4rem;
-}
-header {
-  position: relative;
-  width: 100%;
-  height: 100px;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .sorting--container {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -425,6 +412,16 @@ grid-area: drops;
   overflow-y: auto;
 }
 
+.rankings--container header {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .ranking--container {
   display: grid;
   grid-template-columns: 1fr;
@@ -440,32 +437,12 @@ grid-area: drops;
   padding: 1rem;
 }
 
-.ranking--container .game {
-  display: flex;
-  flex-direction: column-reverse;
-  width: 100%;
-  max-width: 18%;
-  height: auto;
-}
-
 .ranking--container .heading {
   grid-area: heading;
 }
 
-.ranking--container .game p {
-  font-weight: 300;
-}
-
 .ranking--container .drop-zone {
   grid-area: drop;
-  height: auto;
-  min-height: 50px;
-  border-radius: 4rem;
-  padding: 4rem;
-  outline: 4px dashed #EBEBEB;
-  
-}
-.drop-zone {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -475,14 +452,29 @@ grid-area: drops;
   width: 100%;
   max-width: 1200px;
   height: auto;
+  min-height: 50px;
   cursor: grabbing;
+  border-radius: 4rem;
+  padding: 4rem;
+  outline: 4px dashed #EBEBEB;
 }
 
-.drop-zone h3{
+.ranking--container .drop-zone h3{
   width: 100%;
   color: #ccc;
   align-self: center;
   justify-self: center;
+}
 
+.ranking--container .drop-zone .game {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  max-width: 18%;
+  height: auto;
+}
+
+.ranking--container .game p {
+  font-weight: 300;
 }
 </style>
