@@ -10,7 +10,7 @@
         </header>
       <section class="ranking--container">
         <div class="heading">
-          <h2>Love it</h2>
+          <h2>Love It</h2>
         </div>
         <div class="drop-zone" @drop="onDrop($event, 2)" @dragenter.prevent @dragover.prevent>
           <h3 v-if="getList(2) == 0">Drop games you love here!</h3>
@@ -20,7 +20,7 @@
       </section>
       <section class="ranking--container">
         <div class="heading">
-          <h2>Like it</h2>
+          <h2>Like It</h2>
         </div>
         <div class="drop-zone" @drop="onDrop($event, 3)" @dragenter.prevent @dragover.prevent>
           <h3 v-if="getList(3) == 0">Drop games you like here!</h3>
@@ -30,7 +30,7 @@
       </section>
       <section class="ranking--container">
         <div class="heading">
-          <h2>Leave it</h2>
+          <h2>Leave It</h2>
         </div>
         <div class="drop-zone" @drop="onDrop($event, 4)" @dragenter.prevent @dragover.prevent>
           <h3 v-if="getList(4) == 0">Drop games you would leave here!</h3>
