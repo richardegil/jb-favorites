@@ -6,17 +6,20 @@
     <div class="heading">
       <h2>Love it</h2>
     </div>
-    <div class="drop-zone">
-      <Game v-for="{id, title, thumbnail} in getList(2)" :key=id :title=title :thumbnail=thumbnail />
+    <div class="drop-zone" @drop="onDrop($event, 2)" @dragenter.prevent @dragover.prevent>
+      <Game v-for="game in getList(2)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
+        @dragstart="startDrag($event, game)" />
     </div>
   </section>
 
-  <section class="games--container drop-zone">
+  <section class="games--container drop-zone"  @drop="onDrop($event, 1)" @dragenter.prevent @dragover.prevent>
     <Game 
-      v-for="{id, title, thumbnail} in getList(1)"
-      :key=id
-      :title=title
-      :thumbnail=thumbnail
+      v-for="game in getList(1)"
+      :key=game.id
+      :title=game.title
+      :thumbnail=game.thumbnail
+      draggable="true"
+      @dragstart="startDrag($event, game)"
     />
   </section>
 </template>
@@ -24,7 +27,6 @@
 <script setup>
 import { ref } from 'vue'
 import Game from './components/Game.vue'
-
 // games data
 const games = ref([
   {
@@ -101,7 +103,7 @@ const games = ref([
   },
   {
     id: 12,
-    title: "Champ’D Up",
+    title: "Champ'D Up",
     thumbnail: "https://jackboxgames.b-cdn.net/wp-content/uploads/2020/09/Website-Tile-Image.jpg",
     list: 1
   },
@@ -299,15 +301,33 @@ const games = ref([
   }
 ])
 
-// method to get all the items that belong to a list
+// method to get all the games that belong to a list
 const getList = (list) => {
-  return games.value.filter((item) => item.list == list)
+  return games.value.filter((game) => game.list == list)
+}
+
+// method used during startDrag event
+const startDrag = (event, game) => {
+  console.log(game)
+  event.dataTransfer.dropEffect = 'move'
+  event.dataTransfer.effectAllowed = 'move'
+  // getting the id from the game and storing it in the dataTransfer property
+  event.dataTransfer.setData('gameID', game.id)
+}
+
+// method used during onDrop event
+const onDrop = (event, list) => {
+  // getting the stored gameID from the dataTransfer propert
+  const gameID = event.dataTransfer.getData('gameID')
+  // looking for the game in the list of games
+  const game = games.value.find((game) => game.id == gameID)
+  // updating the list property of the current game being dropped
+  game.list = list
 }
 
 </script>
 
 <style scoped>
-
 section {
   padding: 0rem 0 4rem;
 }
@@ -339,7 +359,7 @@ section {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
+    align-games: center;
     justify-content: space-evenly;
     gap: 1rem;
     width: 100%;
@@ -348,5 +368,17 @@ section {
     outline: 1px solid red;
   }
 
- 
+ .game {
+   display: flex;
+   flex-direction: column-reverse;
+   flex: 0 0 18%;
+   width: 100%;
+   height: auto;
+ }
+
+ .game img {
+   width: 100%;
+   max-width: 100%;
+   height: auto;
+ }
 </style>
