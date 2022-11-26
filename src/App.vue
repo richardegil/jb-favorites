@@ -1,3 +1,7 @@
+<template>
+
+</template>
+
 <script setup>
 import { ref } from 'vue'
 
@@ -230,10 +234,6 @@ const games = ref([
   }
 ])
 </script>
-
-<template>
-
-</template>
 
 <style scoped>
 
