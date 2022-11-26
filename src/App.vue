@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
+// games data
 const games = ref([
   {
     id: 0,
