@@ -1,10 +1,19 @@
 <template>
-  <ul>
-    <li v-for="{id, title, thumbnail} in games" :key="id" >
-      {{ title }}
-      {{ thumbnail }}
-    </li>
-  </ul>
+  <h1>Rank Your Favorite Jackbox Games</h1>
+  <section class="ranking--container">
+    <div class="heading">
+      <h2>Love it</h2>
+    </div>
+    <div class="drop-zone">
+    </div>
+  </section>
+
+  <section class="games--container drop-zone">
+    <div class="game drag-element" v-for="{id, title, thumbnail} in games" :key="id">
+      <p>{{ title }}</p>
+      <img :src="thumbnail" :alt=title>
+    </div>
+  </section>
 </template>
 
 <script setup>
@@ -242,4 +251,57 @@ const games = ref([
 
 <style scoped>
 
+section {
+  padding: 0rem 0 4rem;
+}
+.ranking--container {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 'heading drop';
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100px;
+    outline: 1px solid pink;
+  }
+
+  .ranking--container .heading {
+    grid-area: heading;
+    writing-mode: vertical-lr;
+  }
+
+  .ranking--container .heading h2 {
+    rotate: 180deg;
+  }
+
+  .ranking--container .drop-zone {
+    grid-area: drop;
+    background-color: grey;
+  }
+  .games--container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    outline: 1px solid red;
+  }
+
+  .game {
+    display: flex;
+    flex-direction: column-reverse;
+    flex: 0 0 18%;
+    width: 100%;
+    height: auto;
+  }
+
+  .game img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
 </style>
