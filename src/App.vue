@@ -1,5 +1,10 @@
 <template>
-
+  <ul>
+    <li v-for="{id, title, thumbnail} in games" :key="id" >
+      {{ title }}
+      {{ thumbnail }}
+    </li>
+  </ul>
 </template>
 
 <script setup>
