@@ -1,59 +1,56 @@
 <template>
-  <h1>Rank Your Favorite Jackbox Games</h1>
-
-  <section class="ranking--container">
-    <div class="heading">
-      <h2>Love it</h2>
-    </div>
-    <div class="drop-zone" @drop="onDrop($event, 2)" @dragenter.prevent @dragover.prevent>
-      <Game v-for="game in getList(2)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
+  <header>
+    <h1>Rank Your Favorite Jackbox Games</h1>
+  </header>
+  
+  <div class="sorting--container">
+    <section class="games--container drop-zone" @drop="onDrop($event, 1)" @dragenter.prevent @dragover.prevent>
+      <Game v-for="game in getList(1)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
         @dragstart="startDrag($event, game)" />
+    </section>
+    <div class="rankings--container">
+      <section class="ranking--container">
+        <div class="heading">
+          <h2>Love it</h2>
+        </div>
+        <div class="drop-zone" @drop="onDrop($event, 2)" @dragenter.prevent @dragover.prevent>
+          <Game v-for="game in getList(2)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
+            @dragstart="startDrag($event, game)" />
+        </div>
+      </section>
+      <section class="ranking--container">
+        <div class="heading">
+          <h2>Like it</h2>
+        </div>
+        <div class="drop-zone" @drop="onDrop($event, 3)" @dragenter.prevent @dragover.prevent>
+          <Game v-for="game in getList(3)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
+            @dragstart="startDrag($event, game)" />
+        </div>
+      </section>
+      <section class="ranking--container">
+        <div class="heading">
+          <h2>Leave it</h2>
+        </div>
+        <div class="drop-zone" @drop="onDrop($event, 4)" @dragenter.prevent @dragover.prevent>
+          <Game v-for="game in getList(4)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
+            @dragstart="startDrag($event, game)" />
+        </div>
+      </section>
+      <section class="ranking--container">
+        <div class="heading">
+          <h2>Haven't Played</h2>
+        </div>
+        <div class="drop-zone" @drop="onDrop($event, 5)" @dragenter.prevent @dragover.prevent>
+          <Game v-for="game in getList(5)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
+            @dragstart="startDrag($event, game)" />
+        </div>
+      </section>
     </div>
-  </section>
-
-  <section class="ranking--container">
-    <div class="heading">
-      <h2>Like it</h2>
-    </div>
-    <div class="drop-zone" @drop="onDrop($event, 3)" @dragenter.prevent @dragover.prevent>
-      <Game v-for="game in getList(3)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
-        @dragstart="startDrag($event, game)" />
-    </div>
-  </section>
-
-
-  <section class="ranking--container">
-    <div class="heading">
-      <h2>Leave it</h2>
-    </div>
-    <div class="drop-zone" @drop="onDrop($event, 4)" @dragenter.prevent @dragover.prevent>
-      <Game v-for="game in getList(4)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
-        @dragstart="startDrag($event, game)" />
-    </div>
-  </section>
-
-
-  <section class="ranking--container">
-    <div class="heading">
-      <h2>Haven't Played</h2>
-    </div>
-    <div class="drop-zone" @drop="onDrop($event, 5)" @dragenter.prevent @dragover.prevent>
-      <Game v-for="game in getList(5)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
-        @dragstart="startDrag($event, game)" />
-    </div>
-  </section>
-
-
-  <section class="games--container drop-zone"  @drop="onDrop($event, 1)" @dragenter.prevent @dragover.prevent>
-    <Game 
-      v-for="game in getList(1)"
-      :key=game.id
-      :title=game.title
-      :thumbnail=game.thumbnail
-      draggable="true"
-      @dragstart="startDrag($event, game)"
-    />
-  </section>
+    
+    
+    
+    
+  </div>
 </template>
 
 <script setup>
@@ -363,6 +360,55 @@ const onDrop = (event, list) => {
 section {
   padding: 0rem 0 4rem;
 }
+
+h1 {
+  position: fixed;
+}
+
+.sorting--container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 'games drops';
+  width: 100%;
+  height: 100vh;
+}
+
+.games--container {
+  grid-area: games;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.games--container .game {
+  display: flex;
+  flex-direction: column-reverse;
+  /* flex: 0 0 18%; */
+  width: 100%;
+  height: auto;
+}
+
+.games--container .game img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.rankings--container {
+grid-area: drops;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
 .ranking--container {
     display: grid;
     grid-template-columns: 100px 1fr;
@@ -372,6 +418,7 @@ section {
     max-width: 1200px;
     min-height: 100px;
     outline: 1px solid pink;
+    grid-area: drops;
   }
 
   .ranking--container .heading {
@@ -399,18 +446,4 @@ section {
     height: auto;
     outline: 1px solid red;
   }
-
- .game {
-   display: flex;
-   flex-direction: column-reverse;
-   flex: 0 0 18%;
-   width: 100%;
-   height: auto;
- }
-
- .game img {
-   width: 100%;
-   max-width: 100%;
-   height: auto;
- }
 </style>

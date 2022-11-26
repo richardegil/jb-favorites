@@ -13,7 +13,7 @@ const props = defineProps({
 </script>
 
 <style scoped>
-.game {
+/* .game {
    display: flex;
    flex-direction: column-reverse;
    flex: 0 0 18%;
@@ -25,5 +25,5 @@ const props = defineProps({
    width: 100%;
    max-width: 100%;
    height: auto;
- }
+ } */
 </style>
