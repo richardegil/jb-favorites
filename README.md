@@ -4,6 +4,12 @@ This project takes a dataset of the 45 Jackbox games and allows the user to sort
 
 This was developed on a 16" MacBook Pro and should in a browser no smaller than 1280px wide.
 
+## Installation Instructions
+* Clone repo
+* `cd` into the directory
+* Run `npm install`
+* Once complete, run `npm run dev`
+
 ## Built With
 * Vue
 * Vite
