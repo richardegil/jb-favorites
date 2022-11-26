@@ -28,7 +28,6 @@ const games = ref([
     title: "Fibbage 4",
     thumbnail: "https://jackboxgames.b-cdn.net/wp-content/uploads/2022/09/Fibbage4-tile.jpg",
   },
-
   {
     id: 5,
     title: "The Wheel Of Enormous Proportions",
@@ -54,7 +53,6 @@ const games = ref([
     title: "Drawful Animate",
     thumbnail: "https://jackboxgames.b-cdn.net/wp-content/uploads/2021/09/DA_TileImage-1.jpg",
   },
-
   {
     id: 10,
     title: "Blather 'Round",
