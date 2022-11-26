@@ -1,7 +1,6 @@
 <template>
   <h1>Rank Your Favorite Jackbox Games</h1>
 
-  // test drop-zone
   <section class="ranking--container">
     <div class="heading">
       <h2>Love it</h2>
@@ -11,6 +10,39 @@
         @dragstart="startDrag($event, game)" />
     </div>
   </section>
+
+  <section class="ranking--container">
+    <div class="heading">
+      <h2>Like it</h2>
+    </div>
+    <div class="drop-zone" @drop="onDrop($event, 3)" @dragenter.prevent @dragover.prevent>
+      <Game v-for="game in getList(3)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
+        @dragstart="startDrag($event, game)" />
+    </div>
+  </section>
+
+
+  <section class="ranking--container">
+    <div class="heading">
+      <h2>Leave it</h2>
+    </div>
+    <div class="drop-zone" @drop="onDrop($event, 4)" @dragenter.prevent @dragover.prevent>
+      <Game v-for="game in getList(4)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
+        @dragstart="startDrag($event, game)" />
+    </div>
+  </section>
+
+
+  <section class="ranking--container">
+    <div class="heading">
+      <h2>Haven't Played</h2>
+    </div>
+    <div class="drop-zone" @drop="onDrop($event, 5)" @dragenter.prevent @dragover.prevent>
+      <Game v-for="game in getList(5)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
+        @dragstart="startDrag($event, game)" />
+    </div>
+  </section>
+
 
   <section class="games--container drop-zone"  @drop="onDrop($event, 1)" @dragenter.prevent @dragover.prevent>
     <Game 
