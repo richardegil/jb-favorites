@@ -1,8 +1,7 @@
 <template>
   <div class="sorting--container">
     <section class="games--container drop-zone" @drop="onDrop($event, 1)" @dragenter.prevent @dragover.prevent>
-      <Game v-for="game in getList(1)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
-        @dragstart="startDrag($event, game)" />
+      <Game v-for="game in getList(1)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true" @dragstart="startDrag($event, game)" />
     </section>
     <div class="rankings--container">
         <header>
@@ -14,8 +13,7 @@
         </div>
         <div class="drop-zone" @drop="onDrop($event, 2)" @dragenter.prevent @dragover.prevent>
           <h3 v-if="getList(2) == 0">Drop games you love here!</h3>
-          <Game v-for="game in getList(2)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
-            @dragstart="startDrag($event, game)" />
+          <Game v-for="game in getList(2)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true" @dragstart="startDrag($event, game)" />
         </div>
       </section>
       <section class="ranking--container">
@@ -24,8 +22,7 @@
         </div>
         <div class="drop-zone" @drop="onDrop($event, 3)" @dragenter.prevent @dragover.prevent>
           <h3 v-if="getList(3) == 0">Drop games you like here!</h3>
-          <Game v-for="game in getList(3)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
-            @dragstart="startDrag($event, game)" />
+          <Game v-for="game in getList(3)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true" @dragstart="startDrag($event, game)" />
         </div>
       </section>
       <section class="ranking--container">
@@ -34,8 +31,7 @@
         </div>
         <div class="drop-zone" @drop="onDrop($event, 4)" @dragenter.prevent @dragover.prevent>
           <h3 v-if="getList(4) == 0">Drop games you would leave here!</h3>
-          <Game v-for="game in getList(4)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
-            @dragstart="startDrag($event, game)" />
+          <Game v-for="game in getList(4)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true" @dragstart="startDrag($event, game)" />
         </div>
       </section>
       <section class="ranking--container">
@@ -44,8 +40,7 @@
         </div>
         <div class="drop-zone" @drop="onDrop($event, 5)" @dragenter.prevent @dragover.prevent>
           <h3 v-if="getList(5) == 0">Drop games you haven't played yet here!</h3>
-          <Game v-for="game in getList(5)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true"
-            @dragstart="startDrag($event, game)" />
+          <Game v-for="game in getList(5)" :key=game.id :title=game.title :thumbnail=game.thumbnail draggable="true" @dragstart="startDrag($event, game)" />
         </div>
       </section>
     </div>
